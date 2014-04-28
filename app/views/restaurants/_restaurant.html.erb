@@ -1,0 +1,14 @@
+<li>
+  <span class="content">
+  	<%#= restaurant.name %>
+  	<%= link_to restaurant.name, restaurant, title: restaurant.name %>
+  </span>
+  <span class="timestamp">
+    Posted <%= restaurant.id %><%#= time_ago_in_words(restaurant.created_at) %> ago.
+  </span>
+  <% if current_user?(restaurant.user) %>
+    <%= link_to "delete", restaurant, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: restaurant.name %>
+  <% end %>
+</li>

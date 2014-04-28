@@ -1,0 +1,12 @@
+<%= @restaurant.name %>
+<div>
+	<%= render @courses %>
+</div>
+<!-- Make a section here for creating a course -->
+<%= form_for([@restaurant, @course]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :name, placeholder: "Name" %>
+	</div>
+	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
