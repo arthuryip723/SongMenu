@@ -1,4 +1,6 @@
 SongMenu::Application.routes.draw do
+  get "bill/new"
+  get "bill/show"
   # get "courses/create"
   # get "courses/destroy"
   # get "courses/edit"
