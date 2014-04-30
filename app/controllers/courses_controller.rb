@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   		flash[:success] = "Course created!"
   	else
   	end
-	redirect_to @restaurant
+    redirect_to @restaurant
   end
 
   def destroy
@@ -19,5 +19,9 @@ class CoursesController < ApplicationController
 
   def course_params
   	params.require(:course).permit(:name, :price)
+  end
+
+  def correct_user
+    true
   end
 end

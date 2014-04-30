@@ -9,5 +9,14 @@
 		<%= f.text_field :name, placeholder: "Name" %>
 		<%= f.text_field :price, placeholder: "Price" %>
 	</div>
-	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+	<%= f.submit "Course", class: "btn btn-large btn-primary" %>
 <% end %>
+<div>
+	<%= render @bills %>
+</div>
+<%= form_for([@restaurant, @bill]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.submit "Bill", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<!-- Make a section here for editing the bill -->

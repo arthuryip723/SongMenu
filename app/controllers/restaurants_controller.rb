@@ -22,7 +22,8 @@ class RestaurantsController < ApplicationController
 		@restaurant = Restaurant.find(params[:id])
 		@courses = @restaurant.shown_courses
 		@course = @restaurant.courses.build
-
+		@bills = @restaurant.shown_bills
+		@bill = @restaurant.bills.build
 	end
 
 	private
