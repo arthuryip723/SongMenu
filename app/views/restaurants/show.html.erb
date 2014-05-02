@@ -12,6 +12,16 @@
 	<%= f.submit "Course", class: "btn btn-large btn-primary" %>
 <% end %>
 <div>
+	<%= render @tables %>
+</div>
+<%= form_for([@restaurant, @table]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :no, placeholder: "No" %>
+	</div>
+	<%= f.submit "Table", class: "btn btn-large btn-primary" %>
+<% end %>
+<div>
 	<%= render @bills %>
 </div>
 <%= form_for([@restaurant, @bill]) do |f| %>
@@ -20,3 +30,4 @@
 <% end %>
 
 <!-- Make a section here for editing the bill -->
+<!-- First make a form or table -->

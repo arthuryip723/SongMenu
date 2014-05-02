@@ -1,4 +1,7 @@
 SongMenu::Application.routes.draw do
+  get "bills/new"
+  get "tables/new"
+  get "items/new"
   # get "bill/new"
   # get "bill/show"
   # get "courses/create"
@@ -8,7 +11,14 @@ SongMenu::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :restaurants, only: [:create, :destroy, :show] do
     resources :courses
+    resources :tables do
+      resources :bills
+    end
     resources :bills
+  end
+  resources :tables, only: [:create, :destroy, :show]
+  resources :bills do
+    resources :items
   end
   # resources :courses
   # resources :restaurants do

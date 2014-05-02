@@ -20,10 +20,12 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
-		@courses = @restaurant.shown_courses
-		@course = @restaurant.courses.build
-		@bills = @restaurant.shown_bills
-		@bill = @restaurant.bills.build
+		@courses = @restaurant.courses
+		@course = Course.new
+		@tables = @restaurant.tables
+		@table = Table.new
+		@bills = @restaurant.bills
+		@bill = Bill.new
 	end
 
 	private

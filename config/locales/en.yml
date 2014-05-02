@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+
+  enumerize:
+    bill:
+      status:
+        ordered: "Ordered"
+        served: "Served"
+        paid: "Paid"
+    item:
+      status:
+        ordered: "Ordered"
+        prepared: "Prepared"
+        served: "Served"
