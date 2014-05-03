@@ -1,0 +1,12 @@
+<%= @table.no %>
+<div>
+	<%= render @bills %>
+</div>
+<%= form_for([@restaurant, @table, @bill]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field"/>
+		<%#= f.text_field :status, placeholder: "Status" %>
+		<%= f.select :status, Bill.status.options %>
+	</div>
+	<%= f.submit "Bill", class: "btn btn-large btn-primary" %>	
+<% end %>

@@ -1,0 +1,22 @@
+<div><%= @bill.id %></div>
+<div><%= @bill.status %></div>
+<div>
+	<%= render @items %>
+</div>
+<!-- think a scheme to add an item into the bill -->
+<div>
+	<%= render @courses %>
+</div>
+<%= form_for([@bill, @item]) do |f| %>
+	<div class="field">
+	<%= f.collection_select :course_id, @courses, :id, :name, include_blank: true %>
+	<%#= f.select :course_id, @courses, :id, :name, include_blank: true %>
+	<%#= f.text_field :status, placeholder: "Status" %>
+	</div>
+	<%= f.submit "Item", class: "btn btn-large btn-primary" %>
+<% end %>
+<%= form_for(@bill) do |f| %>
+	<%#= f.collection_select :status, Bill.status.options, :status_value, :status, include_blank: true %>
+	<%= f.select :status, Bill.status.options %>
+	<%= f.submit "ABC", class: "btn btn-large btn-primary" %>
+<% end %>
