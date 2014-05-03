@@ -1,0 +1,9 @@
+<div><%= @item.id %></div>
+<div><%= @item.status %></div>
+<%= form_for([@item]) do |f| %>
+	<div class="field">
+		<%= f.collection_select :course_id, @courses, :id, :name, include_blank: true %>
+		<%= f.select :status, Item.status.options %>
+	</div>
+	<%= f.submit "Update", class: "btn btn-large btn-primary" %>
+<% end %>

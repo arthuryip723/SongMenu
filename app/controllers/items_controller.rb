@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def create
   	@bill = Bill.find(params[:bill_id])
-  	@item = @bill.items.build(bill_params)
+  	@item = @bill.items.build(item_params)
   	if @item.save
   		flash[:success] = "Item created!"
   	else
@@ -18,9 +18,22 @@ class ItemsController < ApplicationController
   def destroy
   end
 
+  def update
+  	@item = Item.find(params[:id])
+  	if (@item.update(item_params))
+  		flash[:sucess] = "Item updated!"
+  	end
+  	redirect_to @item
+  end
+
+  def show
+  	@item = Item.find(params[:id])
+  	@courses = @item.bill.table.restaurant.courses
+  end
+
   private
 
-  def bill_params
+  def item_params
   	params.require(:item).permit(:status, :course_id)
   end
 
