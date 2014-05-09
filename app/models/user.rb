@@ -18,6 +18,18 @@ class User < ActiveRecord::Base
     	Digest::SHA1.hexdigest(token.to_s)
 	end
 
+	  # Roles = [ :admin , :default ]
+	  ROLES = %w[admin default]
+
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
+
+  def admin?
+  	self.role == 'admin'
+  end
+
+
 	# private
 
 	#     def create_remember_token
