@@ -1,13 +1,18 @@
-<div><%= @bill.id %></div>
-<div><%= @bill.status %></div>
+<div>Bill Id: <%= @bill.id %></div>
+<div>Bill Status: <%= @bill.status %></div>
 <div>
+	Item List
 	<%= render @items %>
 </div>
 <!-- think a scheme to add an item into the bill -->
 <div>
+	Course List
 	<%= render @courses %>
 </div>
 <%= form_for([@bill, @item]) do |f| %>
+	<div>
+		Item Form
+	</div>
 	<div class="field">
 	<%= f.collection_select :course_id, @courses, :id, :name, include_blank: true %>
 	<%#= f.select :course_id, @courses, :id, :name, include_blank: true %>
@@ -16,7 +21,8 @@
 	<%= f.submit "Item", class: "btn btn-large btn-primary" %>
 <% end %>
 <%= form_for(@bill) do |f| %>
+	<div>Update Bill Form</div>
 	<%#= f.collection_select :status, Bill.status.options, :status_value, :status, include_blank: true %>
 	<%= f.select :status, Bill.status.options %>
-	<%= f.submit "ABC", class: "btn btn-large btn-primary" %>
+	<%= f.submit "Update", class: "btn btn-large btn-primary" %>
 <% end %>

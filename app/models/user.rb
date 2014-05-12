@@ -19,15 +19,17 @@ class User < ActiveRecord::Base
 	end
 
 	  # Roles = [ :admin , :default ]
-	  ROLES = %w[admin default]
+	  ROLES = %w[admin default manager cashier cook waiter guest]
 
   def is?( requested_role )
-    self.role == requested_role.to_s
+    # self.role == requested_role.to_s
+    self.role == requested_role
   end
 
   def admin?
   	self.role == 'admin'
   end
+
 
 
 	# private

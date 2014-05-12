@@ -16,6 +16,8 @@
   <% if can? :manage, @restaurant %>
     hello world!
   <% end %>
+<% elsif signed_in? and current_user.is?('manager') %>
+<% elsif signed_in? and current_user.is?('waiter') %>
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to the Sample App</h1>
@@ -35,3 +37,4 @@
     hello world!
   <% end %>
 <% end %>
+<!-- Here we allow manager to create other account kinds. -->
