@@ -1,4 +1,5 @@
-<% if signed_in? %>
+<% if signed_in? and current_user.is?('admin') %>
+  <!-- I should use the user role here to see what sections to add -->
   <div class="row">
     <aside class="span4">
       <!-- <section>
@@ -16,8 +17,25 @@
   <% if can? :manage, @restaurant %>
     hello world!
   <% end %>
+<% elsif signed_in? and current_user.is?('default') %>
+  <div>The default user should see this line.</div>
 <% elsif signed_in? and current_user.is?('manager') %>
+  <!-- Can create restaurant, cook, waiter, guest, cashier -->
+  <div>The manager should see this line.</div>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/restaurant_form' %>
+      </section>
+    </aside>
+  </div>
+
 <% elsif signed_in? and current_user.is?('waiter') %>
+  <!-- Can create bill, change status of items and bills, pay the bills -->
+<% elsif signed_in? and current_user.is?('cook') %>
+  <!-- Can change the status of items, print item tags -->
+<% elsif signed_in? and current_user.is?('guest') %>
+  <!-- Can create bill, add items. -->
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to the Sample App</h1>

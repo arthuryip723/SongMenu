@@ -18,6 +18,7 @@
 	<%= f.submit "Course", class: "btn btn-large btn-primary" %>
 <% end %>
 <div>
+	Table List
 	<%= render @tables %>
 </div>
 <%= form_for([@restaurant, @table]) do |f| %>
@@ -31,6 +32,7 @@
 	<%= f.submit "Table", class: "btn btn-large btn-primary" %>
 <% end %>
 <div>
+	Bill List
 	<%= render @bills %>
 </div>
 <%= form_for([@restaurant, @bill]) do |f| %>
