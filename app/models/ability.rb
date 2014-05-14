@@ -30,10 +30,20 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new
     # if user.is? :admin
-    if user.admin?
+    # if user.admin?
+    if user.is?('admin')
         can :manage, :all
+    elsif user.is?('manager')
+        can :manage, [Restaurant, Course, Table, Bill, Item]
+    elsif user.is?('waiter')
+        can :manage, [Bill, Item]
+    elsif user.is?('cook')
+        can :manage, [Item]
+    elsif user.is?('guest')
+        can :manage, [Bill, Item]
     else
         can :read, :all
     end
+    # test different layout of whether containing a bill form by using 'guest' and 'cook'
   end
 end

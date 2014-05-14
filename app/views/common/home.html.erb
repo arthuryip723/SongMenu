@@ -1,4 +1,4 @@
-<% if signed_in? and current_user.is?('admin') %>
+<% if signed_in? %>
   <!-- I should use the user role here to see what sections to add -->
   <div class="row">
     <aside class="span4">
@@ -29,10 +29,11 @@
       </section>
     </aside>
   </div>
-
+<% elsif signed_in? and current_user.is?('manager') %>
 <% elsif signed_in? and current_user.is?('waiter') %>
   <!-- Can create bill, change status of items and bills, pay the bills -->
 <% elsif signed_in? and current_user.is?('cook') %>
+  <%= render @items %>
   <!-- Can change the status of items, print item tags -->
 <% elsif signed_in? and current_user.is?('guest') %>
   <!-- Can create bill, add items. -->
