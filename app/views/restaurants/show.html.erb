@@ -1,21 +1,23 @@
 <div>
 	Restaurant Name: <%= @restaurant.name %>
 </div>
-<div>
-	Course List
-	<%= render @courses %>
-</div>
-<!-- Make a section here for creating a course -->
-<%= form_for([@restaurant, @course]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
+<% if can? :manage, @course %>
 	<div>
-		Course Form
+		Course List
+		<%= render @courses %>
 	</div>
-	<div class="field">
-		<%= f.text_field :name, placeholder: "Name" %>
-		<%= f.text_field :price, placeholder: "Price" %>
-	</div>
-	<%= f.submit "Course", class: "btn btn-large btn-primary" %>
+	<!-- Make a section here for creating a course -->
+	<%= form_for([@restaurant, @course]) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div>
+			Course Form
+		</div>
+		<div class="field">
+			<%= f.text_field :name, placeholder: "Name" %>
+			<%= f.text_field :price, placeholder: "Price" %>
+		</div>
+		<%= f.submit "Course", class: "btn btn-large btn-primary" %>
+	<% end %>
 <% end %>
 <div>
 	Table List

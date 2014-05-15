@@ -6,7 +6,7 @@ class CommonController < ApplicationController
       case current_user.role
       when 'manager'
       when 'cook'
-        @items = current_user.restaurant.items
+        @tables = current_user.restaurant.tables
       end
   	end
   end
