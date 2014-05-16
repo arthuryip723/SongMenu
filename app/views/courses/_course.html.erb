@@ -1,1 +1,6 @@
-<li><%= course.name %> <%= course.price %> <%= link_to "Edit", edit_course_path(course) %></li>
+<li>
+	<%= course.name %> <%= course.price %> 
+	<% if can? :manage, course %>
+		<%= link_to "Edit", edit_course_path(course) %>
+	<% end %>
+</li>

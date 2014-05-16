@@ -7,6 +7,7 @@ class CommonController < ApplicationController
       when 'manager'
       when 'cook'
         @tables = current_user.restaurant.tables
+        @items = current_user.restaurant.items
       end
   	end
   end

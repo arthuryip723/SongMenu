@@ -21,6 +21,7 @@ SongMenu::Application.routes.draw do
     resources :items
   end
   resources :items
+  resources :courses
   # resources :courses
   # resources :restaurants do
   #   resources :courses

@@ -5,6 +5,7 @@ class Restaurant < ActiveRecord::Base
 	has_many :tables
 	# has_many :bills
 	has_many :bills, :through => :tables
+	has_many :items, :through => :bills
 	validates :name, presence: true, length: { maximum: 140}
 	validates :user_id, presence: true
 end
