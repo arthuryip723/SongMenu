@@ -1,1 +1,9 @@
-<li><%= link_to item.id, item, title: item.course.name%> <%= item.course.name %> <%= item.status %></li>
+<li>
+	<%= link_to item.id, item, title: item.course.name%> <%= item.course.name %> <%= item.status %>
+	<% if can? :manage, item %>
+	<%= select_tag "item_status", options_for_select(Item.status.options, :selected => item.status), :prompt => "Select a status", :onchange => "select_status(this.value)" %>
+	<%= form_for([item]) do |f| %>
+		<%= f.select :status, Item.status.options, :prompt => "Select a status", :onchange => "select_status()" %> <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+	<% end %>
+	<% end %>
+</li>

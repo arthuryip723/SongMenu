@@ -36,7 +36,14 @@
 <% elsif signed_in? and current_user.is?('waiter') %>
   <!-- Can create bill, change status of items and bills, pay the bills -->
 <% elsif signed_in? and current_user.is?('cook') %>
-  <%= render @tables %>
+  <div>The cook should see this line.</div>
+  <script type="text/javascript">
+    function select_status(value)
+    {
+      // alert("hello world!");
+      alert(value);
+    }
+  </script>
   <%= render @items %>
   <!-- Can change the status of items, print item tags -->
 <% elsif signed_in? and current_user.is?('guest') %>

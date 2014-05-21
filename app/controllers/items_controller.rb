@@ -23,7 +23,11 @@ class ItemsController < ApplicationController
   	if (@item.update(item_params))
   		flash[:sucess] = "Item updated!"
   	end
-  	redirect_to @item
+    if current_user.is?('cook')
+      redirect_to root_url
+    else
+      redirect_to @item
+    end
   end
 
   def show
