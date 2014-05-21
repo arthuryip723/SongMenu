@@ -38,10 +38,12 @@
 <% elsif signed_in? and current_user.is?('cook') %>
   <div>The cook should see this line.</div>
   <script type="text/javascript">
-    function select_status(value)
+    function select_status(value, id)
     {
       // alert("hello world!");
+      alert(id);
       alert(value);
+
     }
   </script>
   <%= render @items %>
