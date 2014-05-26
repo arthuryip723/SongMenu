@@ -38,12 +38,23 @@
 <% elsif signed_in? and current_user.is?('cook') %>
   <div>The cook should see this line.</div>
   <script type="text/javascript">
-    function select_status(value, id)
+    function select_status(value, select)
     {
       // alert("hello world!");
-      alert(id);
+      alert(select.id);
       alert(value);
+      $.ajax({
+        type: "POST",
+        url: "/items/1",
+        data: {
+          utf8: "&#x2713;"
+          _method: "patch",
+          item[status]: "prepared",
+          authenticity_token:""},
+        success: function(){
 
+        }
+      });
     }
   </script>
   <%= render @items %>
