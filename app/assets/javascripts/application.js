@@ -15,3 +15,26 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+    function select_status2(value, select)
+    {
+      // alert("hello world!");
+      // alert(select.item_id);
+      // alert(select.getAttribute("item_id"));
+      // alert($(select).attr("item_id"))
+      // alert(value);
+      // return;
+      $.ajax({
+        type: "POST",
+        url: "/items/" + select.getAttribute("item_id"),
+        data: {
+          // utf8: "&#x2713;",
+          _method: "patch",
+          'item[status]': value,
+          // authenticity_token: <%= raw ('"' +form_authenticity_token + '"') %>
+        },
+        success: function(){
+          alert("success");
+        }
+      });
+    }

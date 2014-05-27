@@ -41,21 +41,31 @@
     function select_status(value, select)
     {
       // alert("hello world!");
-      alert(select.id);
-      alert(value);
+      // alert(select.item_id);
+      // alert(select.getAttribute("item_id"));
+      // alert($(select).attr("item_id"))
+      // alert(value);
+      // return;
       $.ajax({
         type: "POST",
-        url: "/items/1",
+        url: "/items/" + select.getAttribute("item_id"),
         data: {
-          utf8: "&#x2713;"
+          // utf8: "&#x2713;",
           _method: "patch",
-          item[status]: "prepared",
-          authenticity_token:""},
+          'item[status]': value,
+          // authenticity_token: <%= raw ('"' +form_authenticity_token + '"') %>
+        },
         success: function(){
-
+          alert("success");
         }
       });
     }
+
+    $(document).ready(function(){       
+       $('select').each(function(){
+            $(this).val($(this).find("option[selected=selected]").val());
+      });
+    });
   </script>
   <%= render @items %>
   <!-- Can change the status of items, print item tags -->

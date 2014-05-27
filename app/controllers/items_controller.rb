@@ -23,11 +23,18 @@ class ItemsController < ApplicationController
   	if (@item.update(item_params))
   		flash[:sucess] = "Item updated!"
   	end
-    if current_user.is?('cook')
-      redirect_to root_url
-    else
-      redirect_to @item
+    respond_to do |format|
+      if current_user.is?('cook')
+        # redirect_to root_url
+        destination = root_url
+      else
+        # redirect_to @item
+        destination = @item
+      end
+      format.html { redirect_to destination}
+      format.json { render :show, status: :ok}
     end
+
   end
 
   def show
