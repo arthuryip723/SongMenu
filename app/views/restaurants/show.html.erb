@@ -1,49 +1,56 @@
-<div>
-	Restaurant Name: <%= @restaurant.name %>
-</div>
-<% if can? :manage, @course %>
-	<div>
-		Course List
-		<%= render @courses %>
-	</div>
-	<!-- Make a section here for creating a course -->
-	<%= form_for([@restaurant, @course]) do |f| %>
-		<%= render 'shared/error_messages', object: f.object %>
+<div class="row">
+	<div class="span4">
 		<div>
-			Course Form
+			Restaurant Name: <%= @restaurant.name %>
 		</div>
-		<div class="field">
-			<%= f.text_field :name, placeholder: "Name" %>
-			<%= f.text_field :price, placeholder: "Price" %>
+		<% if can? :manage, @course %>
+			<div>
+				Course List
+				<%= render @courses %>
+			</div>
+			<!-- Make a section here for creating a course -->
+			<%= form_for([@restaurant, @course]) do |f| %>
+				<%= render 'shared/error_messages', object: f.object %>
+				<div>
+					Course Form
+				</div>
+				<div class="field">
+					<%= f.text_field :name, placeholder: "Name" %>
+					<%= f.text_field :price, placeholder: "Price" %>
+				</div>
+				<%= f.submit "Course", class: "btn btn-large btn-primary" %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="span4">
+		<div>
+			Table List
+			<%= render @tables %>
 		</div>
-		<%= f.submit "Course", class: "btn btn-large btn-primary" %>
-	<% end %>
-<% end %>
-<div>
-	Table List
-	<%= render @tables %>
+		<%= form_for([@restaurant, @table]) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<div>
+				Table Form
+			</div>
+			<div class="field">
+				<%= f.text_field :no, placeholder: "No" %>
+			</div>
+			<%= f.submit "Table", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+	<div class="span4">
+		<div>
+			Bill List
+			<%= render @bills %>
+		</div>
+		<%= form_for([@restaurant, @bill]) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<div>
+				Bill Form
+			</div>
+			<%= f.submit "Bill", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
 </div>
-<%= form_for([@restaurant, @table]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div>
-		Table Form
-	</div>
-	<div class="field">
-		<%= f.text_field :no, placeholder: "No" %>
-	</div>
-	<%= f.submit "Table", class: "btn btn-large btn-primary" %>
-<% end %>
-<div>
-	Bill List
-	<%= render @bills %>
-</div>
-<%= form_for([@restaurant, @bill]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div>
-		Bill Form
-	</div>
-	<%= f.submit "Bill", class: "btn btn-large btn-primary" %>
-<% end %>
-
 <!-- Make a section here for editing the bill -->
 <!-- First make a form or table -->

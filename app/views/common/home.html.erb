@@ -21,9 +21,9 @@
   <div>The default user should see this line.</div>
 <% elsif signed_in? and current_user.is?('manager') %>
   <!-- Can create restaurant, cook, waiter, guest, cashier -->
-  <div>The manager should see this line.</div>
   <div class="row">
     <aside class="span4">
+      <div><h4>Create a new restaurant?</h4></div>
       <section>
         <%= render 'shared/restaurant_form' %>
       </section>
