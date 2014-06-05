@@ -17,6 +17,7 @@
 				<div class="field">
 					<%= f.text_field :name, placeholder: "Name" %>
 					<%= f.text_field :price, placeholder: "Price" %>
+					<%= f.file_field :image %>
 				</div>
 				<%= f.submit "Course", class: "btn btn-large btn-primary" %>
 			<% end %>

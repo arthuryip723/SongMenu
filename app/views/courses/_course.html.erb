@@ -1,5 +1,5 @@
 <li>
-	<%= course.name %> <%= course.price %> 
+	<%= course.name %> <%= course.price %> <%= image_tag course.image.url %>
 	<% if can? :manage, course %>
 		<%= link_to "Edit", edit_course_path(course) %>
 	<% end %>

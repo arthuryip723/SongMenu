@@ -6,6 +6,9 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'enumerize'
 gem 'cancan'
+# gem 'paperclip', '~> 4.1'
+gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'cocaine'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
